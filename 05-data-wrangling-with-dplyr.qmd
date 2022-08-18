@@ -9,7 +9,10 @@ source("_common.R")
 
 In this chapter, you will be learn about how to use functionality from the `{dplyr}` package to wrangle your data. Data wrangling is the catchall phrase that includes the processes of cleaning, structuring, and summarizing your data. It is a skill that every educational scientist needs to have in their computational toolkit! 
 
-We will use the [comic-characters.csv](https://raw.githubusercontent.com/zief0002/epsy-8251/master/data/comic-characters.csv) data (see the [data codebook](http://zief0002.github.io/epsy-8251/codebooks/comic-characters.html)) to illustrate how to use several data wrangling ideas in order to answer a set of research questions about LGBTQ representation in comics. 
+We will use the [comic-characters.csv](https://raw.githubusercontent.com/zief0002/epsy-8251/master/data/comic-characters.csv) data (see the [data codebook](http://zief0002.github.io/epsy-8251/codebooks/comic-characters.html)) to illustrate how to use several data wrangling functions in order to answer a set of research questions about LGBTQ representation in comics. 
+
+:::exercises
+**Research Questions**
 
 - Who was the first LGBTQ character? 
   + Which year did that character first appear?
@@ -17,7 +20,7 @@ We will use the [comic-characters.csv](https://raw.githubusercontent.com/zief000
 - What percentage of comic characters identify as LQBTQ?
 - Did the percentage of comic characters identifying as LQBTQ change after the Pride Movement began?
 - How does the average number of appearances for comic characters identifying as LQBTQ differ from those who don't?
-
+:::
 
 To begin, we will load the `{dplyr}` and `{readr}` libraries, and import the data into an object called `comics`.
 
@@ -185,18 +188,18 @@ knitr::include_graphics("figs/20-click-data-object.png")
 Based on an examination of the sorted data, we find the first appearance of an LQBTQ character is Jack Casey in 1940.
 
 
-:::exercises
-**Your Turn**
+<!-- :::exercises -->
+<!-- **Your Turn** -->
 
-Use the `sort()` function to determine whether Marvel and DC introduced LGBTQ characters around the same time, or whether one company was more progressive?
-:::
+<!-- Use the `arrange()` function to determine whether Marvel and DC introduced LGBTQ characters around the same time, or whether one company was more progressive? -->
+<!-- ::: -->
 
 <br />
 
 
 ### Sorting in Descending Order
 
-Rather than scrolling through the data, we could also have sorted the data so that the characters with LGBTQ status of "Yes" are printed first. To do this we want to sort the data initally (using the`lgbtq` column) in reverse alphabetical order ("Yes" followed by "No").
+Rather than scrolling through the data, we could also have sorted the data so that the characters with LGBTQ status of "Yes" are printed first. To do this we want to sort the data initially (using the`lgbtq` column) in reverse alphabetical order ("Yes" followed by "No").
 
 Use the `desc()` function on a column name to sort the data in descending order. Here the data are sorted in descending order by LGBTQ status and then by year of first appearance (in ascending order).
 
@@ -206,11 +209,11 @@ comics |>
   arrange(desc(lgbtq), first_appear_year)
 ```
 
-:::exercises
-**Your Turn**
+<!-- :::exercises -->
+<!-- **Your Turn** -->
 
-Use the `sort()` function to determine the first appearance of an LGBTQ female character in DC comics.
-:::
+<!-- Use the `arrange()` function to determine the first appearance of an LGBTQ female character in DC comics. -->
+<!-- ::: -->
 
 
 
@@ -221,7 +224,7 @@ Use the `sort()` function to determine the first appearance of an LGBTQ female c
 
 ## Obtain a Subset of Rows: Filtering
 
-There are many times in research applications that an educational scientist will need to select a subset of data cases. This type of application, for example, is quite common when we carry out demographic analyses (e.g., select the special education students, slect students on free/reduced-price lunch). To select a subset of rows from a tibble or data frame, we will pipe the data frame we want to select rows from into the `filter()` function. 
+There are many times in research applications that an educational scientist will need to select a subset of data cases. This type of application, for example, is quite common when we carry out demographic analyses (e.g., select the special education students, select students on free/reduced-price lunch). To select a subset of rows from a tibble or data frame, we will pipe the data frame we want to select rows from into the `filter()` function. 
 
 The argument(s) for the `filter()` function are logical expressions that will be used to select the rows. For example, suppose we wanted to select the LGBTQ characters (i.e., rows) from the `comics` data frame. We would need a logical expression that returns a `TRUE` value for all the LGBTQ characters. One such logical expression is: `lgbtq=="Yes"`. Recall that a single equals sign (`=`) is the assignment operator and that to say "is equal to", we need to use two equals signs (`==`). Including this logical expression in the `filter()` function, the syntax for selecting the LQBTQ characters is then:
 
@@ -267,11 +270,11 @@ Based on this result (and the results from the earlier `glimpse()` output), we c
 Only 0.6% of comic characters identified as LGBTQ (at least as of 2014). This is well below 7.1%, the percentage of U.S. adults who self-identify as lesbian, gay, bisexual, transgender or something other than heterosexual according to a [2022 Gallup Poll](https://news.gallup.com/poll/389792/lgbt-identification-ticks-up.aspx). (This is even below the 2012 estimate of 3.5%.) This suggests that the LQBTQ population is likely underrepresented in comic culture.
 
 
-:::exercises
-**Your Turn**
+<!-- :::exercises -->
+<!-- **Your Turn** -->
 
-Use the `filter()` function and `nrow()` to determine the percentage of female comic characters.
-:::
+<!-- Use the `filter()` function and `nrow()` to determine the percentage of female comic characters. -->
+<!-- ::: -->
 
 
 <br />
@@ -314,11 +317,11 @@ comics |>
 
 <br />
 
-:::exercises
-**Your Turn**
+<!-- :::exercises -->
+<!-- **Your Turn** -->
 
-Use the `filter()` function and `nrow()` to determine the percentage of LGBTQ comic characters introduced in 1970 or later. Based on the result is there evidence that the Pride Movement may have had an impact on LGBTQ representation? 
-:::
+<!-- Use the `filter()` function and `nrow()` to determine the percentage of LGBTQ comic characters introduced in 1970 or later. Based on the result is there evidence that the Pride Movement may have had an impact on LGBTQ representation?  -->
+<!-- ::: -->
 
 
 
@@ -338,7 +341,7 @@ comics |>
 
 ## Selecting a Subset of Columns
 
-Suppose a journalist at [Lavender Magazine](https://lavendermagazine.com/) is writing a story about the representation of LGBTQ comic characters and has asked you to create a new dataset for their work that only includes the LGBTQ comic characters. Moreover, this new dataset should also only include the characters' name, year of first appearance, and the LGBTQ note. To complete this task, we need to select not only a subset of rows fro mthe original data, but also a subset of the columns.
+Suppose a journalist at [Lavender Magazine](https://lavendermagazine.com/) is writing a story about the representation of LGBTQ comic characters and has asked you to create a new dataset for their work that only includes the LGBTQ comic characters. Moreover, this new dataset should also only include the characters' name, year of first appearance, and the LGBTQ note. To complete this task, we need to select not only a subset of rows from the original data, but also a subset of the columns.
 
 To select a subset of columns, we will use the `select()` function. The argument(s) for this function are the column names of the data frame that you want to select. For example, to select the `character`, `first_appear_year`, and `lgbtq_note` columns from the `comics` data frame we would use the following syntax:
 
@@ -388,13 +391,13 @@ comics |>
   write_csv("C:\Users\username\Desktop\lgbtq-comic-characters.csv")
 ```
 
-In both of the Mac and PC exmaples, the part of the pathname called `username` needs to be modified to be the user name for your computer. Typically this is the username you use to login to your computer.
+In both of the Mac and PC examples, the part of the pathname called `username` needs to be modified to be the user name for your computer. Typically this is the username you use to login to your computer.
 
-:::exercises
-**Your Turn**
+<!-- :::exercises -->
+<!-- **Your Turn** -->
 
-Modify the syntax to export a CSV of the LGBTQ character data to the desktop on your computer. Also try modifying the syntax to export the CSV file to another folder/directory on your computer. 
-:::
+<!-- Modify the syntax to export a CSV of the LGBTQ character data to the desktop on your computer. Also try modifying the syntax to export the CSV file to another folder/directory on your computer.  -->
+<!-- ::: -->
 
 <br />
 
@@ -455,7 +458,7 @@ comics |>
 <!-- ::: -->
 
 :::protip
-If you are running this in the console, the `num_years` column won't be displayed because of the default printing options for tibbles; the new column is created, just not displayed. To view it, we can use the `print()` funtion with the argument `width=Inf`, which displays all columns in the tibble.
+If you are running this in the console, the `num_years` column won't be displayed because of the default printing options for tibbles; the new column is created, just not displayed. To view it, we can use the `print()` function with the argument `width=Inf`, which displays all columns in the tibble.
 
 ```{r eval=FALSE}
 # Add a new column and display all the columns
@@ -537,10 +540,10 @@ comics |>
 
 ## Computations on Groups
 
-While we have leaned that, on average, comic characters appear about 20 times. And, that the variation is quite large ($SD=93.8$), telling us that there are characters who appear many more times (e.g., Spiderman, Susan Storm, Wonder Woman). Although a useful first step in an anlayis, this alone does not answer our research question about how the average number of appearances for comic characters identifying as LQBTQ differ from those who don't. To answer this, we need to compute these summary measures for LGBTQ and non-LGBTQ characters separately.
+While we have leaned that, on average, comic characters appear about 20 times. And, that the variation is quite large ($SD=93.8$), telling us that there are characters who appear many more times (e.g., Spiderman, Susan Storm, Wonder Woman). Although a useful first step in an analysis, this alone does not answer our research question about how the average number of appearances for comic characters identifying as LQBTQ differ from those who don't. To answer this, we need to compute these summary measures for LGBTQ and non-LGBTQ characters separately.
 
 
-The `group_by()` function groups the data by a specified variable. By itself, this function essentially does nothing. But it is powerful when the grouped output is piped into other functions, such as `summarize()`. Here we use `group_by(lgbtq)` to compute the mean number of appearances fand also the standard deviation for both LGBTQ and non-LGBTQ characters.
+The `group_by()` function groups the data by a specified variable. By itself, this function essentially does nothing. But it is powerful when the grouped output is piped into other functions, such as `summarize()`. Here we use `group_by(lgbtq)` to compute the mean number of appearances and also the standard deviation for both LGBTQ and non-LGBTQ characters.
 
 ```{r}
 comics |>
@@ -581,11 +584,11 @@ comics |>
 
 This added information reminds us that while the average number of appearances for LGBTQ characters is higher than for non-LGBTQ characters (for both DC and Marvel), overwhelming majority of comic characters are non-LGBTQ. 
 
-:::exercises
-**Your Turn**
+<!-- :::exercises -->
+<!-- **Your Turn** -->
 
-Modify the syntax to determine the average number of appearances for both DC and Marvel LGBTQ and non-LGBTQ characters (as well as the standard deviation and sample size) before and after the Pride Movement.  
-:::
+<!-- Modify the syntax to determine the average number of appearances for both DC and Marvel LGBTQ and non-LGBTQ characters (as well as the standard deviation and sample size) before and after the Pride Movement.   -->
+<!-- ::: -->
 
 <br />
 
