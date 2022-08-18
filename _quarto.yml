@@ -1,0 +1,42 @@
+project:
+  type: book
+  output-dir: docs
+  preview:
+    port: 4200
+    browser: true
+
+book:
+  title: "Computational Toolkit for Educational Scientists"
+  author: "Andrew Zieffler"
+  date: "`r Sys.Date()`"
+  sidebar:
+    search: true
+    background: "#9f86c0"
+  # cover-image: "figs/banner.png"
+  chapters:
+    - index.qmd
+    - part: 01-statistical-computation.qmd
+      chapters:
+        - 02-r-and-rstudio-installation.qmd
+        - 03-getting-started-with-r.qmd
+        - 04-data-structures-in-r.qmd
+        - 05-data-wrangling-with-dplyr.qmd
+
+bibliography: ['assets/toolkit.bib']
+csl: 'assets/apa-single-spaced.csl'
+
+format:
+  html:
+    theme: 
+      - sketchy
+      - "assets/theme.scss"
+    css: ["assets/notes.css", "assets/table-styles.css"]
+    code-copy: true
+    highlight-style: zenburn
+    df-print: paged
+    mainfont: 'Crimson Text'
+    fontsize: '12pt'
+    linestretch: '1.5em'
+    linkcolor: '#31AFD4'
+
+editor: source
