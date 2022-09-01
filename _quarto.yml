@@ -21,6 +21,7 @@ book:
         - 03-getting-started-with-r.qmd
         - 04-data-structures-in-r.qmd
         - 05-data-wrangling-with-dplyr.qmd
+        - 06-visualizing-with-ggplot2.qmd
 
 bibliography: ['assets/toolkit.bib']
 csl: 'assets/apa-single-spaced.csl'
