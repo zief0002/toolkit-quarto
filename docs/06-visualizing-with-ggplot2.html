@@ -1086,13 +1086,13 @@ $ population   &lt;dbl&gt; 37.2000, 2.8800, 42.2000, 0.0770, 30.8000, 0.0963, 44
 </div>
 </div>
 </div>
-<p>One useful extension package is the <code>{scales}</code> package. The functions and layers in this package are useful for transforming and labeling scales that are used to create your plot. For example, one of the functions in the <code>{scales}</code> package will put a dollar sign in front of all the values labelled on an axis (very useful if the attribute being plotted is dollars). There is a nice web tutorial on using the <code>{scales}</code> package <a href="https://bookdown.org/Maxine/ggplot2-maps/posts/2019-11-27-using-scales-package-to-modify-ggplot2-scale/">here</a>.</p>
+<p>One useful extension package is the <code>{scales}</code> package. The functions and layers in this package are useful for transforming and labeling scales that are used to create your plot. For example, one of the functions in the <code>{scales}</code> package. <code>label_number()</code>, can be used to add a character prior to, or after all the numericval values labelled on an axis (very useful if the attribute being plotted is dollars). There is a nice web tutorial on using the <code>{scales}</code> package <a href="https://bookdown.org/Maxine/ggplot2-maps/posts/2019-11-27-using-scales-package-to-modify-ggplot2-scale/">here</a>.</p>
 <p>Here we add</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load library</span></span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the `{scales}` package to add $ in front of labels on the x-axis</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the `{scales}` package to add $ in front of labels and k at the end on the x-axis</span></span>
 <span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> gapminder, <span class="fu">aes</span>(<span class="at">x =</span> income, <span class="at">y =</span> co2)) <span class="sc">+</span>  </span>
 <span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>() <span class="sc">+</span></span>
 <span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">shape =</span> <span class="dv">21</span>, <span class="at">size =</span> <span class="dv">4</span>, <span class="fu">aes</span>(<span class="at">fill =</span> region)) <span class="sc">+</span></span>
@@ -1102,8 +1102,8 @@ $ population   &lt;dbl&gt; 37.2000, 2.8800, 42.2000, 0.0770, 30.8000, 0.0963, 44
 <span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Africa"</span>, <span class="st">"The Americas"</span>, <span class="st">"Asia"</span>, <span class="st">"Europe"</span>)</span>
 <span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
 <span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(</span>
-<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">name =</span> <span class="st">"Income (in thousands of international dollars, fixed for 2017 prices)"</span>,</span>
-<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> dollar</span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">name =</span> <span class="st">"Income (in international dollars, fixed for 2017 prices)"</span>,</span>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> <span class="fu">label_number</span>(<span class="at">prefix =</span> <span class="st">"$"</span>, <span class="at">suffix =</span> <span class="st">"k"</span>)</span>
 <span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
 <span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
@@ -1176,7 +1176,7 @@ $ population   &lt;dbl&gt; 37.2000, 2.8800, 42.2000, 0.0770, 30.8000, 0.0963, 44
 <li><strong>Cookbook for R:</strong> Web-based version of Winston Chang’s R Graphics Cookbook http://www.cookbook-r.com/Graphs/ (The UMN library has electronic access to the actual book. Just search for “R Graphics Cookbook” and log-in with your x500.)</li>
 <li><strong>Data Visualization: A Practical Introduction:</strong> Online book about data viz using ggplot2 https://socviz.co/</li>
 </ul>
-<p>Happy Plotting!!! 📈 🎉</p>
+<p>Happy Plotting!!! 💹 🎂</p>
 <p><br></p>
 </section>
 <section id="references" class="level2 unnumbered">

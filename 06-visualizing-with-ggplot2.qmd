@@ -353,6 +353,7 @@ The `name=` option labels the scale---it replaces `xlab()`. The `limits=` argume
 
 <br />
 
+
 ### Customizing the Color and Fill
 
 Scaling functions can also be used to fine-tune colors and fills. For these you need to specify the aesthetic, either color or fill, and also the palette you want to use. For example, `scale_fill_manual()` can be used to manually set the colors when the `fill=` aesthetic mapping is used, whereas `scale_color_manual()` can be used to manually set the colors when the `color=` aesthetic mapping is used.
@@ -726,7 +727,7 @@ There are several packages that extend the functionality of `{ggplot2}`. Many of
 knitr::include_graphics("docs/figs/22-ggplot-extensions.png")
 ```
 
-One useful extension package is the `{scales}` package. The functions and layers in this package are useful for transforming and labeling scales that are used to create your plot. For example, one of the functions in the `{scales}` package will put a dollar sign in front of all the values labelled on an axis (very useful if the attribute being plotted is dollars). There is a nice web tutorial on using the `{scales}` package [here](https://bookdown.org/Maxine/ggplot2-maps/posts/2019-11-27-using-scales-package-to-modify-ggplot2-scale/).
+One useful extension package is the `{scales}` package. The functions and layers in this package are useful for transforming and labeling scales that are used to create your plot. For example, one of the functions in the `{scales}` package. `label_number()`, can be used to add a character prior to, or after all the numericval values labelled on an axis (very useful if the attribute being plotted is dollars). There is a nice web tutorial on using the `{scales}` package [here](https://bookdown.org/Maxine/ggplot2-maps/posts/2019-11-27-using-scales-package-to-modify-ggplot2-scale/).
 
 Here we add
 
@@ -738,7 +739,7 @@ Here we add
 # Load library
 library(scales)
 
-# Use the `{scales}` package to add $ in front of labels on the x-axis
+# Use the `{scales}` package to add $ in front of labels and k at the end on the x-axis
 ggplot(data = gapminder, aes(x = income, y = co2)) +  
   geom_smooth() +
   geom_point(shape = 21, size = 4, aes(fill = region)) +
@@ -748,8 +749,8 @@ ggplot(data = gapminder, aes(x = income, y = co2)) +
     labels = c("Africa", "The Americas", "Asia", "Europe")
   ) +
   scale_x_continuous(
-    name = "Income (in thousands of international dollars, fixed for 2017 prices)",
-    labels = dollar
+    name = "Income (in international dollars, fixed for 2017 prices)",
+    labels = label_number(prefix = "$", suffix = "k")
   ) +
   theme_minimal()
 ```
