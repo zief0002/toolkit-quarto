@@ -9,7 +9,7 @@ source("_common.R")
 
 In this chapter, you will be learn about how to use functionality from the `{dplyr}` package to wrangle your data. Data wrangling is the catchall phrase that includes the processes of cleaning, structuring, and summarizing your data. It is a skill that every educational scientist needs to have in their computational toolkit! 
 
-We will use the [comic-characters.csv](https://raw.githubusercontent.com/zief0002/epsy-8251/master/data/comic-characters.csv) data (see the [data codebook](http://zief0002.github.io/epsy-8251/codebooks/comic-characters.html)) to illustrate how to use several data wrangling functions in order to answer a set of research questions about LGBTQ representation in comics. 
+We will use the [comic-characters.csv](https://raw.githubusercontent.com/zief0002/epsy-8251/master/data/comic-characters.csv) data (see the [data codebook](https://zief0002.github.io/miniature-garbanzo/codebooks/comic-characters.html)) to illustrate how to use several data wrangling functions in order to answer a set of research questions about LGBTQ representation in comics. 
 
 :::exercises
 **Research Questions**
